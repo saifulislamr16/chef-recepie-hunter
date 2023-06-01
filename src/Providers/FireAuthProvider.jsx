@@ -7,52 +7,52 @@ const auth = getAuth(app);
 const gmailProvider = new GoogleAuthProvider();
 const gitProvider = new GithubAuthProvider();
 
-const FireAuthProvider = ({children}) => {
-    
+const FireAuthProvider = ({ children }) => {
+
     const [load, setLoad] = useState(true);
     const [user, setUser] = useState(null);
 
-    useEffect(()=>{
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, current => {
             setUser(current);
             setLoad(false);
         });
 
-        return () =>{
+        return () => {
             return unsubscribe();
         }
-    },[])
+    }, [])
 
-    const LogIn = (email, pass) =>{
+    const LogIn = (email, pass) => {
         setLoad(true);
         return signInWithEmailAndPassword(auth, email, pass);
     }
 
-    const GoogleLogIn = () =>{
+    const GoogleLogIn = () => {
         setLoad(true);
         return signInWithPopup(auth, gmailProvider);
     }
 
-    const GitHubLogIn = ()=>{
+    const GitHubLogIn = () => {
         setLoad(true);
         return signInWithPopup(auth, gitProvider)
     }
 
-    const Register = (email, pass) =>{
+    const Register = (email, pass) => {
         setLoad(true);
         return createUserWithEmailAndPassword(auth, email, pass)
     }
 
-    const Update = (name, url) =>{
+    const Update = (name, url) => {
         setLoad(true);
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: url
-          })
+        })
     }
 
-    const LogOut = () =>{
+    const LogOut = () => {
         setLoad(true)
-       return signOut(auth)
+        return signOut(auth)
     }
 
     const provides = {
@@ -63,7 +63,8 @@ const FireAuthProvider = ({children}) => {
         GoogleLogIn,
         GitHubLogIn,
         Register,
-        Update
+        Update,
+        LogOut
     }
     return (
         <FireAuthContext.Provider value={provides}>

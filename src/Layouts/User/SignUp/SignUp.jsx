@@ -7,8 +7,9 @@ const SignUp = () => {
     const [show, setShow] = useState(false);
     const [emailError, setEmailError] = useState(null);
     const [passError, setPassError] = useState(null);
-    const [infoUpdate, setInfoUpdate] = ("NO");
-    const { Register, Update, user } = useContext(FireAuthContext);
+    const [name, setName] = useState('');
+    const [url, setUrl] = useState('');
+    const { Register, Update, user, LogOut } = useContext(FireAuthContext);
 
     const handleShow = () => {
         setShow(!show);
@@ -26,8 +27,9 @@ const SignUp = () => {
         console.log(name, email, password, url)
         Register(email, password)
             .then(user => {
+                setName(name)
+                setUrl(url)
                 console.log(user.user)
-
             })
             .catch((error) => {
                 console.log(error.message)
@@ -38,19 +40,21 @@ const SignUp = () => {
                     setPassError("Password should be at least 6 characters")
                 }
             })
-
+        
     }
 
-    useEffect(()=>{
-        Update("Test", "TEST")
+
+
+    useEffect(() => {
+        console.log(name)
+        Update(name, url)
             .then(() => {
                 console.log("Updated");
-                setInfoUpdate("Yes");
             })
             .catch((error) => {
                 console.log("update error", error.message)
             })
-    },[user, infoUpdate])
+    }, [user])
 
     return (
         <div className=' bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[100vh] flex items-center  justify-center'>
