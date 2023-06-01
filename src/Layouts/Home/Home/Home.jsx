@@ -1,4 +1,4 @@
-import React from 'react';
+import { HeartIcon, LinkIcon } from '@heroicons/react/24/solid'
 import './Home.css'
 const Home = () => {
     return (
@@ -17,22 +17,28 @@ const Home = () => {
 
             <div className='text-center text-5xl my-10 font-semibold text-black'>Food Receipes</div>
 
-            <div>
-                <div className="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">
-                            Shoes!
-                            <div className="badge badge-secondary">NEW</div>
-                        </h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="card-actions justify-end">
-                            <div className="badge badge-outline">Fashion</div>
-                            <div className="badge badge-outline">Products</div>
+            <div className='md:grid md:grid-cols-3 md:gap-3'>
+                <div className='w-3/4 my-10 md:mx-4 mx-2'>
+                    <div className="card md:w-96 w-64 bg-base-100 shadow-xl">
+                        <figure><img className='md:h-72 h-60 w-full' src="https://i.ibb.co/pydqzXB/pexels-2102934.jpg" alt="Shoes" /></figure>
+                        <div className="card-body">
+                            <h2 className="card-title flex justify-between">
+                                John Doe
+                                <div className="badge badge-secondary flex items-center space-x-1">
+                                    <img src="https://i.ibb.co/JpCz807/heart-1.png" className='w-4 h-4' />
+                                    <span>500</span>
+                                </div>
+                            </h2>
+                            <div className="text-lg">
+                                <h3>Experience: 5 yrs</h3>
+                                <h3>Receipes: 5</h3>
+                            </div>
+                            <button className='btn w-full mt-5'>View Receipe</button>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };
