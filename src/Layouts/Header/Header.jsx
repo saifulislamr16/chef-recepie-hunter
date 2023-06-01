@@ -27,7 +27,16 @@ const Header = () => {
                         <li className='hover:bg-gray-700 hover:border border-white hover:text-white hover:rounded-md hover:px-[15px] hover:py-[11px] px-4 py-3 '><NavLink className={({ isActive }) => isActive ? "border-b-2 border-rose-500  rounded-none text-white pb-1 hover:text-white" : ""} to="/blog">Blog</NavLink></li>
                     </ul>
                 </div>
-                
+                <div className="navbar-end">
+                    {
+                        
+                            user ?
+                                user?.photoURL ?
+                                    <img className='w-10 h-10 rounded-full outline outline-white' title={user?.displayName} src={user?.photoURL} /> :
+                                    <UserCircleIcon title={user?.displayName} className='w-10 h-10 text-white' /> :
+                                <Link to="/login" className="btn border-1 hover:border-white">Log In</Link>
+                    }
+                </div>
             </div>
         </div>
     );
