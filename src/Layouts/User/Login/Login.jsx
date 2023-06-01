@@ -1,13 +1,13 @@
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { FireAuthContext } from '../../../Providers/FireAuthProvider';
 
 const Login = () => {
     const [show, setShow] = useState(false);
     const [emailError, setEmailError] = useState(null);
     const [passError, setPassError] = useState(null);
-    const { LogIn, GoogleLogIn, GitHubLogIn } = useContext(FireAuthContext);
+    const { LogIn, GoogleLogIn, GitHubLogIn, LogOut } = useContext(FireAuthContext);
 
     const handleShow = () => {
         setShow(!show);
@@ -22,7 +22,6 @@ const Login = () => {
         setPassError(null);
         LogIn(email, password)
             .then(user => {
-                console.log(user.user)
                 form.reset();
             })
             .catch((error) => {
@@ -34,7 +33,6 @@ const Login = () => {
                     setPassError("Wrong password")
                 }
             })
-            
     }
     const handleGoogleLogIn = () =>{
         GoogleLogIn()
@@ -58,7 +56,7 @@ const Login = () => {
     return (
         <div className=' bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[100vh] flex items-center  justify-center'>
             <div className='md:w-2/4 md:grid grid-cols-7'>
-                <img className='hidden md:block pl-1 rounded-tl-lg rounded-bl-lg col-span-3 h-full w-full backdrop-blur-sm bg-white/60' src={'https://i.ibb.co/SKjKbv9/Tablet-login-pana.png'} />
+                <img className='hidden md:block pl-1 rounded-tl-lg rounded-bl-lg col-span-3 h-full w-full backdrop-blur-sm bg-white/70' src={'https://i.ibb.co/SKjKbv9/Tablet-login-pana.png'} />
                 <div className='md:col-span-4 backdrop-blur-sm bg-black/40 md:p-10 p-8 md:rounded-tr-lg md:rounded-br-lg'>
                     <div className=' text-center font-semibold text-3xl border-b-2 pb-2 mb-2 text-white'>Log In</div>
 
@@ -110,6 +108,7 @@ const Login = () => {
                     <h3 className='font-semibold text-lg text-center text-white mt-5'>
                         Don't have an account ? <Link to="/signup" className='text-emerald-300 border-b border-emerald-300'>Register</Link>
                     </h3>
+                    <button onClick={() =>LogOut()}>out</button>
                 </div>
             </div>
 

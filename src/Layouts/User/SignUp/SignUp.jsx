@@ -1,19 +1,23 @@
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FireAuthContext } from '../../../Providers/FireAuthProvider';
+import Swal from 'sweetalert2'
 
 const SignUp = () => {
+    const naviagte = useNavigate();
     const [show, setShow] = useState(false);
     const [emailError, setEmailError] = useState(null);
     const [passError, setPassError] = useState(null);
     const [name, setName] = useState('');
     const [url, setUrl] = useState('');
-    const { Register, Update, user, LogOut } = useContext(FireAuthContext);
+    const [created, setCreated] = useState(false);
+    const { Register, Update, user } = useContext(FireAuthContext);
 
     const handleShow = () => {
         setShow(!show);
     }
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -29,7 +33,8 @@ const SignUp = () => {
             .then(user => {
                 setName(name)
                 setUrl(url)
-                console.log(user.user)
+                setCreated(true)
+                form.reset()
             })
             .catch((error) => {
                 console.log(error.message)
@@ -40,16 +45,21 @@ const SignUp = () => {
                     setPassError("Password should be at least 6 characters")
                 }
             })
-        
     }
 
 
 
     useEffect(() => {
-        console.log(name)
         Update(name, url)
             .then(() => {
                 console.log("Updated");
+                if (user !== null && created) {
+                    setCreated(false)
+                    Swal.fire({
+                        title: 'Account Created',
+                        icon: 'success'
+                      })
+                }
             })
             .catch((error) => {
                 console.log("update error", error.message)
