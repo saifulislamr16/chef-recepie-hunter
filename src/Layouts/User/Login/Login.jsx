@@ -7,7 +7,7 @@ const Login = () => {
     const [show, setShow] = useState(false);
     const [emailError, setEmailError] = useState(null);
     const [passError, setPassError] = useState(null);
-    const { LogIn, GoogleLogIn, GitHubLogIn, LogOut } = useContext(FireAuthContext);
+    const { LogIn, GoogleLogIn, GitHubLogIn, LogOut, user } = useContext(FireAuthContext);
 
     const handleShow = () => {
         setShow(!show);
@@ -98,7 +98,7 @@ const Login = () => {
                             </div>
                             <div className='text-xl font-semibold text-white mx-3'>Google</div>
                         </button>
-                        <button onClick={handleGitHubLogIn} className="rounded-lg flex items-center justify-between outline outline-1 outline-white hover:bg-amber-300">
+                        <button onClick={handleGitHubLogIn} className="rounded-lg flex items-center justify-between outline outline-1 outline-white hover:bg-amber-300 ">
                             <div className='bg-white p-2 rounded-tl-lg rounded-bl-lg'>
                                 <img src='https://i.ibb.co/3m3Jj9t/github.png' className='w-6 h-6' />
                             </div>
@@ -108,7 +108,7 @@ const Login = () => {
                     <h3 className='font-semibold text-lg text-center text-white mt-5'>
                         Don't have an account ? <Link to="/signup" className='text-emerald-300 border-b border-emerald-300'>Register</Link>
                     </h3>
-                    <button onClick={() =>LogOut()}>out</button>
+                    <button onClick={() =>user && LogOut()}>out</button>
                 </div>
             </div>
 

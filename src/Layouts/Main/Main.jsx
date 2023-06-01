@@ -1,10 +1,15 @@
 import { Outlet } from "react-router-dom";
-
+import Header from "../Header/Header";
+import { useContext } from 'react';
+import { FireAuthContext } from '../../Providers/FireAuthProvider';
 
 
 const Main = () => {
+    const { user, load } = useContext(FireAuthContext);
+    console.log(user, load);
     return (
-        <div className="md:m-10 sm:m-5">
+        <div className="">
+            <Header></Header>
             <Outlet></Outlet>
         </div>
     );
