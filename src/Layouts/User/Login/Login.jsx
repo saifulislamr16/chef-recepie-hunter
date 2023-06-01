@@ -23,6 +23,7 @@ const Login = () => {
         LogIn(email, password)
             .then(user => {
                 console.log(user.user)
+                form.reset();
             })
             .catch((error) => {
                 console.log(error.message)
@@ -56,9 +57,9 @@ const Login = () => {
     }
     return (
         <div className=' bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[100vh] flex items-center  justify-center'>
-            <div className='md:w-2/4 md:grid grid-cols-5'>
-                <img className='hidden md:block pl-1 rounded-tl-lg rounded-bl-lg col-span-2 h-full w-full backdrop-blur-sm bg-white/60' src={'https://i.ibb.co/SKjKbv9/Tablet-login-pana.png'} />
-                <div className='md:col-span-3 backdrop-blur-sm bg-black/40 md:p-10 p-8 md:rounded-tr-lg md:rounded-br-lg'>
+            <div className='md:w-2/4 md:grid grid-cols-7'>
+                <img className='hidden md:block pl-1 rounded-tl-lg rounded-bl-lg col-span-3 h-full w-full backdrop-blur-sm bg-white/60' src={'https://i.ibb.co/SKjKbv9/Tablet-login-pana.png'} />
+                <div className='md:col-span-4 backdrop-blur-sm bg-black/40 md:p-10 p-8 md:rounded-tr-lg md:rounded-br-lg'>
                     <div className=' text-center font-semibold text-3xl border-b-2 pb-2 mb-2 text-white'>Log In</div>
 
                     <form onSubmit={handleSubmit} className='md:m-5 text-white'>

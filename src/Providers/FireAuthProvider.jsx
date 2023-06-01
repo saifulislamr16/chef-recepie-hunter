@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import app from '../Firebase/firebase.config';
 export const FireAuthContext = createContext(null);
 const auth = getAuth(app);
@@ -38,12 +38,32 @@ const FireAuthProvider = ({children}) => {
         return signInWithPopup(auth, gitProvider)
     }
 
+    const Register = (email, pass) =>{
+        setLoad(true);
+        return createUserWithEmailAndPassword(auth, email, pass)
+    }
+
+    const Update = (name, url) =>{
+        setLoad(true);
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: url
+          })
+    }
+
+    const LogOut = () =>{
+        setLoad(true)
+       return signOut(auth)
+    }
+
     const provides = {
         auth,
         user,
+        load,
         LogIn,
         GoogleLogIn,
-        GitHubLogIn
+        GitHubLogIn,
+        Register,
+        Update
     }
     return (
         <FireAuthContext.Provider value={provides}>
