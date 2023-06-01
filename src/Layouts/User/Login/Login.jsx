@@ -7,6 +7,7 @@ const Login = () => {
     const [show, setShow] = useState(false);
     const [emailError, setEmailError] = useState(null);
     const [passError, setPassError] = useState(null);
+    const [netStat, setNetStat] = useState(false);
     const { LogIn, GoogleLogIn, GitHubLogIn, LogOut, user } = useContext(FireAuthContext);
 
     const handleShow = () => {
@@ -20,6 +21,7 @@ const Login = () => {
         const password = form.password.value;
         setEmailError(null);
         setPassError(null);
+        setNetStat(false);
         LogIn(email, password)
             .then(user => {
                 form.reset();
@@ -32,26 +34,33 @@ const Login = () => {
                 if (error.message.includes("wrong-password")) {
                     setPassError("Wrong password")
                 }
+                if (error.message.includes("network-request-failed")) {
+                    setNetStat(true)
+                }
             })
     }
-    const handleGoogleLogIn = () =>{
+    const handleGoogleLogIn = () => {
         GoogleLogIn()
-        .then(user => {
-            console.log(user.user)
-        })
-        .catch((error) => {
-            console.log(error.message)
-        })
+            .then(user => {
+                console.log(user.user)
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
     }
 
-    const handleGitHubLogIn = ()=>{
+    const handleGitHubLogIn = () => {
         GitHubLogIn()
-        .then(user => {
-            console.log(user.user)
-        })
-        .catch((error) => {
-            console.log(error.message)
-        })
+            .then(user => {
+                console.log(user.user)
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
+    }
+
+    const handleAlart = ()=>{
+        setNetStat(false)
     }
     return (
         <div className=' bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[100vh] flex items-center  justify-center'>
@@ -60,7 +69,19 @@ const Login = () => {
                 <div className='md:col-span-4 backdrop-blur-sm bg-black/40 md:p-10 p-8 md:rounded-tr-lg md:rounded-br-lg'>
                     <div className=' text-center font-semibold text-3xl border-b-2 pb-2 mb-2 text-white'>Log In</div>
 
-                    <form onSubmit={handleSubmit} className='md:m-5 text-white'>
+                    <div id="alert-2" className={`${netStat ? 'flex' : 'hidden'} p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400`} role="alert">
+                        <svg aria-hidden="true" className="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"></path></svg>
+                        <span className="sr-only">Info</span>
+                        <div className="ml-3 text-sm font-medium">
+                            Network connection error
+                        </div>
+                        <button onClick={handleAlart} type="button" className="ml-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-2" aria-label="Close">
+                            <span className="sr-only">Close</span>
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"></path></svg>
+                        </button>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className=' text-white'>
                         <div className="mb-5">
                             <label className={`block mb-2 text-xl font-medium ${emailError ? 'text-red-500' : 'text-white'}`}>Email<span className='text-red-500 ml-1'>*</span></label>
                             <input type="email" name='email' id="email" className={emailError ? 'bg-red-50 border border-red-500 text-red-500 placeholder-red-500 text-xl rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2 dark:bg-red-100 dark:border-red-400' :
@@ -108,7 +129,7 @@ const Login = () => {
                     <h3 className='font-semibold text-lg text-center text-white mt-5'>
                         Don't have an account ? <Link to="/signup" className='text-emerald-300 border-b border-emerald-300'>Register</Link>
                     </h3>
-                    <button onClick={() =>user && LogOut()}>out</button>
+                    <button onClick={() => user && LogOut()}>out</button>
                 </div>
             </div>
 
