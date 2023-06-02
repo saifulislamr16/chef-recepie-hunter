@@ -13,7 +13,7 @@ const Receipe = ({ value, no }) => {
                                 <div className="badge badge-lg badge-accent">{no+1}</div>
                             </h2>
                             
-                            <ReactStarsRating className='flex space-x-1' value={Math.round(rating)}></ReactStarsRating>
+                            <ReactStarsRating className='flex space-x-1' value={rating}></ReactStarsRating>
                         </div>
                         <div className="w-full justify-between border-b-2 pb-4  my-2">
                             <h1 className='mb-3 text-lg font-semibold w-fit text-blue-700'>Ingradients : </h1>

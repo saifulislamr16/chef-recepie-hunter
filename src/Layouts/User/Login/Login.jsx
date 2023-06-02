@@ -1,6 +1,6 @@
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { useContext, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FireAuthContext } from '../../../Providers/FireAuthProvider';
 
 const Login = () => {
@@ -9,6 +9,8 @@ const Login = () => {
     const [passError, setPassError] = useState(null);
     const [netStat, setNetStat] = useState(false);
     const { LogIn, GoogleLogIn, GitHubLogIn, LogOut, user } = useContext(FireAuthContext);
+    const path = useLocation();
+    const navigate = useNavigate();
 
     const handleShow = () => {
         setShow(!show);
@@ -25,6 +27,7 @@ const Login = () => {
         LogIn(email, password)
             .then(user => {
                 form.reset();
+                redirect(user.user)
             })
             .catch((error) => {
                 console.log(error.message)
@@ -42,7 +45,8 @@ const Login = () => {
     const handleGoogleLogIn = () => {
         GoogleLogIn()
             .then(user => {
-                console.log(user.user)
+                console.log()
+                redirect(user.user)
             })
             .catch((error) => {
                 console.log(error.message)
@@ -52,7 +56,8 @@ const Login = () => {
     const handleGitHubLogIn = () => {
         GitHubLogIn()
             .then(user => {
-                console.log(user.user)
+                console.log()
+                redirect(user.user)
             })
             .catch((error) => {
                 console.log(error.message)
@@ -61,6 +66,17 @@ const Login = () => {
 
     const handleAlart = ()=>{
         setNetStat(false)
+    }
+
+    const redirect = (user)=>{
+        if(user){
+            if(path.state?.history){
+                navigate(`${path.state?.history}`)
+            }
+            else{
+                navigate('/')
+            }
+        }
     }
     return (
         <div className=' bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[100vh] flex items-center  justify-center'>
@@ -127,7 +143,7 @@ const Login = () => {
                         </button>
                     </div>
                     <h3 className='font-semibold text-lg text-center text-white mt-5'>
-                        Don't have an account ? <Link to="/signup" className='text-emerald-300 border-b border-emerald-300'>Register</Link>
+                        Do not have an account ? <Link to="/signup" className='text-emerald-300 border-b border-emerald-300'>Register</Link>
                     </h3>
                     <button onClick={() => user && LogOut()}>out</button>
                 </div>

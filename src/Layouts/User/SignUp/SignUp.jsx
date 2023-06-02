@@ -2,6 +2,7 @@ import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { useContext, useEffect, useState } from 'react';
 import { FireAuthContext } from '../../../Providers/FireAuthProvider';
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const [show, setShow] = useState(false);
