@@ -2,7 +2,6 @@ import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 const Chef = ({value}) => {
     const {id, image_url, name, experience_years, num_recipes, likes} = value;
-    console.log(image_url)
     return (
         <div>
             <div className='w-3/4 my-10 md:mx-4 mx-auto'>

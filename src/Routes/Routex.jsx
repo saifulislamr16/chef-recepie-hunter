@@ -31,8 +31,9 @@ const routes = createBrowserRouter([
                 element:<SignUp></SignUp>
             },
             {
-                path:'/recipe/:id',
-                element:<ChefRecipe></ChefRecipe>
+                path:'/recipe/:chefId',
+                element:<ChefRecipe></ChefRecipe>,
+                loader: ({params}) => fetch(`http://localhost:3000/receipe/${params.chefId}`)
             }
         ]
     }

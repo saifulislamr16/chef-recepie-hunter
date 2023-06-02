@@ -1,11 +1,9 @@
 
 import { useLoaderData } from 'react-router';
-import LazyLoad from 'react-lazy-load';
-import './Home.css'
 import Chef from '../Chef/Chef';
+import './Home.css'
 const Home = () => {
     const chefs = useLoaderData();
-    console.log(chefs);
     return (
         <div>
             <div className={`bg-cover bg-image md:h-[90vh] h-[50vh] rounded-lg my-10 md:mx-4 mx-2`}>

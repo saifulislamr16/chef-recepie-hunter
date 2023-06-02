@@ -14,7 +14,6 @@ const FireAuthProvider = ({ children }) => {
     
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, current => {
-            console.log("inside")
             setUser(current);
             setLoad(false);
         });
