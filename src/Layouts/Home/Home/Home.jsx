@@ -1,10 +1,10 @@
-import { HeartIcon, LinkIcon } from '@heroicons/react/24/solid'
+
 import './Home.css'
 const Home = () => {
     return (
         <div>
             <div className={`bg-cover bg-image md:h-[90vh] h-[50vh] rounded-lg my-10 md:mx-4 mx-2`}>
-                <div className='rounded-lg flex items-center justify-center text-white bg-gradient-to-r from-orange-800/70 md:h-[90vh] h-[50vh] p-5'>
+                <div className='rounded-lg flex items-center justify-center text-white bg-gradient-to-r from-orange-800/70 md:h-[90vh] h-[50vh] p-8'>
                     <div >
                         <h1 className=' text-5xl md:text-7xl font-semibold'> Welcome</h1>
                         <h1 className=' text-5xl md:text-7xl font-semibold'> To </h1>
@@ -17,8 +17,8 @@ const Home = () => {
 
             <div className='text-center text-5xl my-10 font-semibold text-black'>Food Receipes</div>
 
-            <div className='md:grid md:grid-cols-3 md:gap-3'>
-                <div className='w-3/4 my-10 md:mx-4 mx-2'>
+            <div className='md:grid md:grid-cols-3 md:gap-3 '>
+                <div className='w-3/4 my-10 md:mx-4 mx-auto'>
                     <div className="card md:w-96 w-64 bg-base-100 shadow-xl">
                         <figure><img className='md:h-72 h-60 w-full' src="https://i.ibb.co/pydqzXB/pexels-2102934.jpg" alt="Shoes" /></figure>
                         <div className="card-body">
@@ -38,6 +38,36 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
+
+
+            <div className="carousel w-11/12 md:h-[700px] mx-auto my-10">
+                <div id="slide1" className="carousel-item relative w-full">
+                    <img src="https://i.ibb.co/r03sH1M/slide1.jpg" className="w-full h-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide4" className="btn btn-circle">❮</a>
+                        <a href="#slide2" className="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide2" className="carousel-item relative w-full">
+                    <img src="https://i.ibb.co/VCsWKQx/slide2.jpg" className="w-full h-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide1" className="btn btn-circle">❮</a>
+                        <a href="#slide3" className="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide3" className="carousel-item relative w-full">
+                    <img src="https://i.ibb.co/zGyDckJ/slide3.jpg" className="w-full h-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide2" className="btn btn-circle">❮</a>
+                        <a href="#slide4" className="btn btn-circle">❯</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+
 
         </div>
     );

@@ -1,11 +1,9 @@
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { FireAuthContext } from '../../../Providers/FireAuthProvider';
 import Swal from 'sweetalert2'
 
 const SignUp = () => {
-    const naviagte = useNavigate();
     const [show, setShow] = useState(false);
     const [emailError, setEmailError] = useState(null);
     const [passError, setPassError] = useState(null);
@@ -72,7 +70,7 @@ const SignUp = () => {
                 console.log("update error", error.message)
             })
     }, [user])
-
+    
     return (
         <div className=' bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-[100vh] flex items-center  justify-center'>
             <div className='md:w-3/4 md:grid grid-cols-7'>

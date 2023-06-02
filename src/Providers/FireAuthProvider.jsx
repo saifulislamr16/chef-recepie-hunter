@@ -11,9 +11,10 @@ const FireAuthProvider = ({ children }) => {
 
     const [load, setLoad] = useState(true);
     const [user, setUser] = useState(null);
-
+    
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, current => {
+            console.log("inside")
             setUser(current);
             setLoad(false);
         });
@@ -44,7 +45,7 @@ const FireAuthProvider = ({ children }) => {
     }
 
     const Update = (name, url) => {
-        setLoad(true);
+        setLoad(false);
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: url
         })
