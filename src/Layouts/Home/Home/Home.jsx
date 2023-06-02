@@ -67,7 +67,124 @@ const Home = () => {
 
             </div>
 
+            <div className='text-center text-5xl my-10 font-semibold text-black'>Food News</div>
 
+            <div className='w-full flex justify-center my-10'>
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>
+                                    {/* <label>
+                                    <input type="checkbox" className="checkbox" />
+                                </label> */}
+                                </th>
+                                <th>Author</th>
+                                <th>Title</th>
+                                <th>Release</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* row 1 */}
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                <td className='font-semibold'>
+                                    Jhon Doe
+                                    <br />
+
+                                    <span className="badge badge-ghost badge-sm">Reporter</span>
+                                </td>
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src="https://static.toiimg.com/thumb/100630334.cms?width=680&height=512&imgsize=39404" alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">What is white jamun, and why is it a must-have in summer</div>
+                                            <div className="text-sm opacity-50">TIMESOFINDIA.COM</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Jun 1, 2023</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs"><a target="_blank" href="https://timesofindia.indiatimes.com/life-style/food-news/what-is-white-jamun-and-why-is-it-a-must-have-in-summer/photostory/100630320.cms">details</a></button>
+                                </th>
+                            </tr>
+                            {/* row 2 */}
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                <td className='font-semibold'>
+                                    Nusrath Jahan
+                                    <br />
+
+                                    <span className="badge badge-ghost badge-sm">Writer</span>
+                                </td>
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src="https://tds-images.thedailystar.net/sites/default/files/styles/medium_205/public/images/2023/03/20/bread_pudding.png?itok=mtbF2l9-&timestamp=1679306109" alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">Experience a fusion of flavours at Boro's</div>
+                                            <div className="text-sm opacity-50">The Daily Star</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Mar 22, 2023</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs"><a target="_blank" href="https://timesofindia.indiatimes.com/life-style/food-news/what-is-white-jamun-and-why-is-it-a-must-have-in-summer/photostory/100630320.cms">details</a></button>
+                                </th>
+                            </tr>
+                            {/* row 3 */}
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                <td className='font-semibold'>
+                                    Jhon Doe
+                                    <br />
+
+                                    <span className="badge badge-ghost badge-sm">Reporter</span>
+                                </td>
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src="https://static.toiimg.com/thumb/msid-83848108,width-1280,resizemode-4/83848108.jpg" alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">What is Black Diamond Apple, its benefits and why it is so costly</div>
+                                            <div className="text-sm opacity-50">TIMESOFINDIA.COM</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>May 30, 2023</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs"><a target="_blank" href="https://timesofindia.indiatimes.com/life-style/food-news/what-is-black-diamond-apple-its-benefits-and-why-it-is-so-costly/photostory/100623263.cms">details</a></button>
+                                </th>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
 
         </div>
     );
