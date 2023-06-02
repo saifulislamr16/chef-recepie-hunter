@@ -5,6 +5,7 @@ import SignUp from "../Layouts/User/SignUp/SignUp";
 import Home from "../Layouts/Home/Home/Home";
 import Blog from "../Layouts/Blog/Blog";
 import Error from "../Error/Error";
+import ChefRecipe from "../Layouts/ChefRecipe/ChefRecipe";
 
 const routes = createBrowserRouter([
     {
@@ -14,7 +15,8 @@ const routes = createBrowserRouter([
         children: [
             {
                 path:"/",
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch(`http://localhost:3000/chefs`)
             },
             {
                 path:"/blog",
@@ -27,6 +29,10 @@ const routes = createBrowserRouter([
             {
                 path:"/signup",
                 element:<SignUp></SignUp>
+            },
+            {
+                path:'/recipe/:id',
+                element:<ChefRecipe></ChefRecipe>
             }
         ]
     }
