@@ -20,7 +20,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div>
-                    <p>Copyright © 2023 - All right reserved by Saiful Islam rumon</p>
+                    <p>Copyright © 2023 - All right reserved by Saiful Islam Rumon</p>
                 </div>
             </footer>
         </div>
